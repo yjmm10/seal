@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1127</width>
+    <height>774</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGraphicsView" name="image_win">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>20</y>
+     <width>401</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>700</y>
+     <width>252</width>
+     <height>56</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="batch_save">
+      <property name="text">
+       <string>批量保存</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QSpinBox" name="label_nums">
+      <property name="minimum">
+       <number>-99</number>
+      </property>
+      <property name="stepType">
+       <enum>QAbstractSpinBox::DefaultStepType</enum>
+      </property>
+      <property name="value">
+       <number>28</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QCheckBox" name="line_label_on">
+      <property name="text">
+       <string>文本行标注</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_47">
+      <property name="text">
+       <string>标注数量</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="clear_dir">
+      <property name="text">
+       <string>清空文件夹</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>430</y>
+     <width>251</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>批量配置参数</string>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>231</width>
+      <height>236</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="5" column="1">
+      <widget class="QCheckBox" name="bottom_random">
+       <property name="text">
+        <string>随机</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_36">
+       <property name="text">
+        <string>上方文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_43">
+       <property name="text">
+        <string>保存文件夹</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="inter_filepath">
+       <property name="text">
+        <string>content/inter.txt</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="save_dir">
+       <property name="text">
+        <string>out</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_42">
+       <property name="text">
+        <string>文件路径(随机无效)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_38">
+       <property name="text">
+        <string>下方文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_41">
+       <property name="text">
+        <string>内部文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="bottom_filepath">
+       <property name="text">
+        <string>content/bottom.txt</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_37">
+       <property name="text">
+        <string>数量</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_40">
+       <property name="text">
+        <string>文件路径(随机无效)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_39">
+       <property name="text">
+        <string>文件路径(随机无效)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QCheckBox" name="top_random">
+       <property name="text">
+        <string>随机</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QCheckBox" name="inter_random">
+       <property name="text">
+        <string>随机</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="batch_nums">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_44">
+       <property name="text">
+        <string>文件夹前缀</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="file_pre">
+       <property name="text">
+        <string>{shape}_{num}_{time}</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="top_filepath">
+       <property name="text">
+        <string>content/top.txt</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>10</y>
+     <width>251</width>
+     <height>651</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>文字信息配置</string>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>231</width>
+      <height>625</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="top_text_content">
+       <property name="text">
+        <string>厦门天锐科技股份有限公司</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string>字体</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>文本行宽度</string>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="0">
+      <widget class="QLabel" name="label_30">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_27">
+       <property name="text">
+        <string>中间文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="26" column="0">
+      <widget class="QLabel" name="label_29">
+       <property name="text">
+        <string>文字宽高</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QCheckBox" name="top_text_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <widget class="QLineEdit" name="bottom_text_font">
+       <property name="text">
+        <string>./fonts/宋体.TTF</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>文字宽高</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QCheckBox" name="bottom_text_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>内容</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_20">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_26">
+       <property name="text">
+        <string>文本行宽度</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="top_text_shape">
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="28" column="0">
+      <widget class="QLabel" name="label_31">
+       <property name="text">
+        <string>字体</string>
+       </property>
+      </widget>
+     </item>
+     <item row="27" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QSpinBox" name="inter_shift_y">
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+         <property name="stepType">
+          <enum>QAbstractSpinBox::DefaultStepType</enum>
+         </property>
+         <property name="value">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLineEdit" name="top_text_font_w">
+         <property name="text">
+          <string>21</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="top_text_font_h">
+         <property name="text">
+          <string>24</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="12" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLineEdit" name="bottom_text_font_w">
+         <property name="text">
+          <string>10</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="bottom_text_font_h">
+         <property name="text">
+          <string>15</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSpinBox" name="top_text_space">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLineEdit" name="bottom_text_content">
+       <property name="text">
+        <string>123456789012X</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLineEdit" name="bottom_text_size_w">
+         <property name="text">
+          <string>123</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="bottom_text_size_h">
+         <property name="text">
+          <string>73</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="26" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <item>
+        <widget class="QLineEdit" name="inter_text_font_w">
+         <property name="text">
+          <string>27</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="inter_text_font_h">
+         <property name="text">
+          <string>31</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="20" column="0">
+      <widget class="QLabel" name="label_34">
+       <property name="text">
+        <string>字间距</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>文字宽高</string>
+       </property>
+      </widget>
+     </item>
+     <item row="20" column="1">
+      <widget class="QSpinBox" name="inter_text_space">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="1">
+      <widget class="QCheckBox" name="inter_text_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_22">
+       <property name="text">
+        <string>下方文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="27" column="0">
+      <widget class="QLabel" name="label_46">
+       <property name="text">
+        <string>文字偏移</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_33">
+       <property name="text">
+        <string>字间距</string>
+       </property>
+      </widget>
+     </item>
+     <item row="19" column="0">
+      <widget class="QLabel" name="label_32">
+       <property name="text">
+        <string>文本行宽度</string>
+       </property>
+      </widget>
+     </item>
+     <item row="19" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QLineEdit" name="inter_text_size_w">
+         <property name="text">
+          <string>125</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="inter_text_size_h">
+         <property name="text">
+          <string>75</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLineEdit" name="top_text_size_w">
+         <property name="text">
+          <string>123</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="top_text_size_h">
+         <property name="text">
+          <string>74</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_35">
+       <property name="text">
+        <string>字间距</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="bottom_text_shape">
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_25">
+       <property name="text">
+        <string>内容</string>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="1">
+      <widget class="QLineEdit" name="inter_text_content">
+       <property name="text">
+        <string>财务专用章</string>
+       </property>
+      </widget>
+     </item>
+     <item row="28" column="1">
+      <widget class="QLineEdit" name="inter_text_font">
+       <property name="text">
+        <string>./fonts/宋体.TTF</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="0">
+      <widget class="QLabel" name="label_28">
+       <property name="text">
+        <string>内容</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QSpinBox" name="bottom_text_space">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="top_text_font">
+       <property name="text">
+        <string>./fonts/宋体.TTF</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>字体</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>上方文字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="1">
+      <widget class="QComboBox" name="inter_text_shape">
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>251</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>图片信息配置</string>
+   </property>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>230</width>
+      <height>435</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>图像大小wh</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="image_w">
+         <property name="text">
+          <string>310</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="image_h">
+         <property name="text">
+          <string>310</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>颜色RGB</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="img_g">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="img_r">
+         <property name="text">
+          <string>255</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="img_b">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="resize_factor">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>2</number>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>外轮廓配置</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QCheckBox" name="out_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="out_shape">
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>大小</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="out_size_w">
+         <property name="text">
+          <string>150</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="out_size_h">
+         <property name="text">
+          <string>100</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>线粗</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QSpinBox" name="out_width">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>边界线配置</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QCheckBox" name="border_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="border_shape">
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>大小</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="border_size_w">
+         <property name="text">
+          <string>140</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="border_size_h">
+         <property name="text">
+          <string>90</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>线粗</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QSpinBox" name="border_width">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>内部线配置</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QCheckBox" name="in_on">
+       <property name="text">
+        <string>启用</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>形状</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QComboBox" name="in_shape">
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rectangle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>oval</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>大小</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLineEdit" name="in_size_w">
+         <property name="text">
+          <string>100</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="in_size_h">
+         <property name="text">
+          <string>75</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>线粗</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QSpinBox" name="in_width">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_45">
+       <property name="text">
+        <string>清晰度</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>670</y>
+     <width>231</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="update_config">
+      <property name="text">
+       <string>配置更新</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="image_draw">
+      <property name="text">
+       <string>生成</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="save_path">
+      <property name="text">
+       <string>seal.png</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="single_save">
+      <property name="text">
+       <string>单张保存</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

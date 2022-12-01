@@ -42,7 +42,7 @@ class SEAL:
     # 获取列表中所有相邻点之间的长度
     def cal_points_length(self,xy:list):
         # xy : 坐标点列表 [[x,y],...]
-        assert isinstance(xy,list|tuple), print("输出的xy非数组，检查类型")
+        assert isinstance(xy,(list,tuple)), print("输出的xy非数组，检查类型",xy)
         total_length = 0 
         part_length_list = []
         for i in range(0,len(xy)-1):
@@ -108,6 +108,7 @@ class SEAL:
                 degree -= 180
             if not top and text_pos[i][1]>=0:
                 degree -= 180
+            # y轴需要做个翻转
             result.append([texts[text_len-1-i], text_pos[i][0],text_pos[i][1],degree])
         return result, start_degree, cross_degree
     
@@ -208,7 +209,7 @@ class SEAL:
         text_len = len(texts)
         cross_length = (font_size[0]*text_len+(text_len-1)*space)*error
         # 一半
-        half_cross_length = cross_length / 2
+        half_cross_length = cross_length // 2
         # 模拟从90~-90的点位置
         xys = self.cal_draw_points(a,b,270,180,split_nums)
         _, part_length_list = self.cal_points_length(xys)
@@ -269,6 +270,27 @@ class SEAL:
         else:
             label_info = label_buttom + label_top[::-1]
         return infos, label_info
+    
+    def cal_text_and_label_pos(self,ellipse_ab,txt_wh,space,texts, label_nums=28, split_nums=1000,top=True):
+        # ellipse_ab : 椭圆长短轴
+        # txt_wh : 文字宽高
+        # space : 文字间距
+        # texts : 文本
+        # label_nums :标签数量，上下包含
+        infos,_,_ = self.cal_ellipse_text_info_sim(*ellipse_ab, txt_wh, space, split_nums,texts, top=top)
+        label_infos,_,_ = self.cal_ellipse_text_label_info_sim(*ellipse_ab, txt_wh, space, split_nums,texts, label_nums//2, top=top)
+        label_top,label_buttom = [],[]
+        for char,x,y,degree in label_infos:
+            lt,rt,rb,lb,ml,mt,mr,mb = self.cal_text_border_pos([x,y],txt_wh[::-1],degree,clock=True)
+            label_top.append(mt)
+            label_buttom.append(mb)
+        if top:
+            label_info = label_buttom[::-1] + label_top
+        else:
+            label_info = label_buttom + label_top[::-1]
+        return infos, label_info
+    
+    
     def cal_every_text_and_label_pos(self,ellipse_ab,txt_wh,space,texts,split_nums=1000,top=True):
         # ellipse_ab : 椭圆长短轴
         # txt_wh : 文字宽高
@@ -285,3 +307,41 @@ class SEAL:
                 lt,rt,rb,lb,ml,mt,mr,mb = self.cal_text_border_pos([x,y],txt_wh[::-1],degree,clock=True)
                 every_label.append([rb,lb,lt,rt,char])
         return infos, every_label
+        
+    # 计算矩形文本，指定标注数量
+    def cal_rec_text_pos_label(self,txt_wh,space,texts,label_nums=4):
+        """计算矩形文本的文字中心坐标以及指定标注数目的标签坐标
+
+        Args:
+            # rec_wh (list | tuple): 矩形文本行的宽高
+            txt_wh (_type_): 文字的宽高
+            space (_type_): 文字间距
+            texts (_type_): 文字
+            label_nums (int, optional): 文本行标注数目，包含上下. Defaults to 4.
+
+        Returns:
+            _type_: 文本中心以及文本行标注
+        """
+        error = 1.1 # 精度，用于调整
+        label_error = 1.1 # 精度，用于调整
+        text_len = len(texts)
+        # 文本的长度
+        text_cross_length = (txt_wh[0]*text_len+(text_len-1)*space)*error
+        per_text_length = text_cross_length/(text_len-1)
+        start_pos = text_cross_length//2
+        text_pos = [[-start_pos+per_text_length*i, 0] for i in range(text_len)]
+        infos = []
+        for i in range(text_len):
+            infos.append([texts[i],*(text_pos[i]),0])
+        
+        
+        # 标注的长度
+        label_cross_length = (txt_wh[0]*text_len+text_len*space)*label_error
+        # 一半标签
+        per_label_length = label_cross_length/(label_nums//2-1)
+        start_pos = label_cross_length // 2
+        label_pos = [[-start_pos+per_label_length*i, txt_wh[1]//2] for i in range(label_nums//2)]
+        label_pos += [[start_pos-per_label_length*i, -txt_wh[1]//2] for i in range(label_nums//2)]
+        return infos, label_pos
+
+            

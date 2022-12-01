@@ -31,7 +31,7 @@ class Images:
         font_style = ImageFont.truetype(font=font, size=font_size[1], encoding="utf-8")
         xy = ((max_dim-font_size[1])//2,(max_dim-font_size[1])//2)
         # print(xy)
-        draw.text(xy,text,(255,0,0),font=font_style,spacing=spacing) #设置位置坐标 文字 颜色 字体
+        draw.text(xy,text,color,font=font_style,spacing=spacing) #设置位置坐标 文字 颜色 字体
         if max_dim ==font_size[1]*2:
             new_size = (int(max_dim*font_size[0]/font_size[1]),max_dim) 
         else:
@@ -56,7 +56,13 @@ class Images:
         # self.image.show()
     
     # 创建画布
-    def create_image(self,path,size:list|tuple,mode:str = "RGB"):
+    def create_image(self,path,size,mode:str = "RGBA",color=(0,0,0,0)):
         # size: wh
-        self.image = Image.new(mode, (size[0], size[1]), "black")  # 黑色背景
+        self.image = Image.new(mode, (size[0], size[1]), color=color)  # 黑色背景
         self.draw = ImageDraw.Draw(self.image)
+        
+    def create_image2(self,size,mode:str = "RGBA",color=(0,0,0,0)):
+        # size: wh
+        image = Image.new(mode, (size[0], size[1]), color=color)  # 黑色背景
+        # draw = ImageDraw.Draw(image)
+        return image
