@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Merge</class>
+ <widget class="QDialog" name="Merge">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>958</width>
+    <height>667</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>图片合并</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>110</y>
+     <width>241</width>
+     <height>186</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>背景图片</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>前景图片</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>位置</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>透明度</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="back_pos_w">
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="back_pos_h">
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="back_path">
+      <property name="text">
+       <string>back/bg01.png</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QCheckBox" name="back_padding">
+      <property name="text">
+       <string>启用,批量默认关</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDoubleSpinBox" name="fore_alpha">
+      <property name="maximum">
+       <double>1.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>缩放</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>背景图扩充</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="fore_path">
+      <property name="text">
+       <string>fore/fore_1.png</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QDoubleSpinBox" name="fore_factor">
+      <property name="minimum">
+       <double>0.010000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>99.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.100000000000000</double>
+      </property>
+      <property name="value">
+       <double>1.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>保存路径</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="single_save_image">
+      <property name="text">
+       <string>merge/single_image.png</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGraphicsView" name="back_view">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>30</y>
+     <width>281</width>
+     <height>251</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>290</y>
+     <width>53</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>背景</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>290</y>
+     <width>53</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>前景</string>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="fore_view">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>30</y>
+     <width>281</width>
+     <height>251</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="merge_view">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>310</y>
+     <width>301</width>
+     <height>261</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>590</y>
+     <width>53</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>合并</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="show_images">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>300</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>显示图片</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="merge_images">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>300</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>合并图片</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>330</y>
+     <width>241</width>
+     <height>218</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="fore_dir">
+      <property name="text">
+       <string>fore</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLineEdit" name="fore_factors_l">
+        <property name="text">
+         <string>0.5</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="fore_factors_r">
+        <property name="text">
+         <string>2</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_17">
+      <property name="text">
+       <string>前景个数</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>透明度</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>背景目录</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>合并目录</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="file_pre">
+      <property name="text">
+       <string>{time}_{num}_{size}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QSpinBox" name="fore_num_l">
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="fore_num_r">
+        <property name="value">
+         <number>2</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="save_dir">
+      <property name="text">
+       <string>merge</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="back_dir">
+      <property name="text">
+       <string>back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string>文件前缀</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_14">
+      <property name="text">
+       <string>缩放</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="fore_alphas_l">
+        <property name="text">
+         <string>0.5</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="fore_alphas_r">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>前景目录</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_18">
+      <property name="text">
+       <string>背景数量</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QSpinBox" name="back_use_num">
+      <property name="maximum">
+       <number>9999</number>
+      </property>
+      <property name="value">
+       <number>10</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="batch_merge_images">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>560</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>批量合并</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save_image">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>300</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>保存图片</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="label_on">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>560</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>数据标注</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clear_dir">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>560</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空文件夹</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

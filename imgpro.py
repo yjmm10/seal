@@ -9,9 +9,9 @@ import random
 def xywh2xyxyxyxy(x,y,w,h):
     return [[x,y],[x+w,y],[x+w,y+h],[x,y+h]]
 
-def merge_image(fore_image, back_image, fore_pos=(0,0),fore_alpha=1.0,fore_factor=1.0,back_padding=False,fore_func=lambda x:x):
+def merge_fore_to_back_image(fore_image, back_image, fore_pos=(0,0),fore_alpha=1.0,fore_factor=1.0,back_padding=False,fore_func=lambda x:x):
     """将两个图片进行合并，支持自定义透明度 alpha, 缩放factor, 背景图缩放开关 padding, 前景图回调函数 func
-
+        背景图过小，会重定义为前景图大小，padding开启时，pos会包含
     Args:
         fore_image (PIL.Image): 前景图
         back_image (PIL.Image): 背景图
@@ -30,14 +30,16 @@ def merge_image(fore_image, back_image, fore_pos=(0,0),fore_alpha=1.0,fore_facto
     
     # 设置缩放因子 透明度
     fore_w, fore_h  = fore_image_temp.size
-    fore_new_w = int(fore_w / fore_factor)
-    fore_new_h = int(fore_h / fore_factor)
+    fore_new_w = int(fore_w * fore_factor)
+    fore_new_h = int(fore_h * fore_factor)
     fore_image_temp = fore_image_temp.resize((fore_new_w, fore_new_h), Image.Resampling.LANCZOS)
     fore_w, fore_h  = fore_image_temp.size
     for i in range(fore_new_w):
         for k in range(fore_new_h):
             color = fore_image_temp.getpixel((i, k))
-            color = color[:-1] + (int((color[-1]*fore_alpha)%255), )
+            if len(color) == 3:
+                print(color)
+            color = color[:-1] + ((int(color[-1]*(1-fore_alpha)))%256, )
             fore_image_temp.putpixel((i, k), color)
 
     fore_image_temp = fore_func(fore_image_temp)
@@ -56,11 +58,13 @@ def merge_image(fore_image, back_image, fore_pos=(0,0),fore_alpha=1.0,fore_facto
     if back_w < back_limit_w:
         back_new_w = back_limit_w
         print(f"背景图宽度过小, {back_w} < {back_limit_w}")
+    else:
+        back_new_w = back_w    
     if back_h < back_limit_h:
         back_new_h = back_limit_h
         print(f"背景图高度过小, {back_h} < {back_limit_h}")
-    back_new_w = back_w
-    back_new_h = back_h
+    else:
+        back_new_h = back_h
     final_image = final_image.resize((back_new_w,back_new_h),Image.Resampling.LANCZOS)
     
     final_image.paste(fore_image_temp, fore_pos, mask=fore_image_temp)
@@ -73,15 +77,16 @@ def merge_image(fore_image, back_image, fore_pos=(0,0),fore_alpha=1.0,fore_facto
     
     return final_image, xywh2xyxyxyxy(label_x,label_y,label_w,label_h)
 
-def random_merge_images(fore_images,back_image,fore_poss=None,fore_alphas = None ,fore_factors = None, fore_full = True, fore_func = lambda x : x):
+def random_merge_images(fore_images,back_image,fore_poss=None,fore_alphas = None ,fore_factors = None, fore_full = True, fore_func = lambda x : x,fore_range={"fore_alphas":[0.01,0.99],"fore_factors":[0.01,5]}):
     
     final_image = back_image.copy()
     back_w, back_h = final_image.size
     
     image_nums = len(fore_images)
     if fore_alphas == None:
-        fore_alphas = [random.randint(1,100)/100 for i in range(image_nums)]
-    elif isinstance(fore_alphas, (float,int)):
+        fore_alphas = [random.randint(fore_range["fore_alphas"][0]*100,fore_range["fore_alphas"][1]*100)/100 for i in range(image_nums)]
+    # 单值，或范围一致
+    elif isinstance(fore_alphas, (float,int)) or fore_range["fore_alphas"][0]==fore_range["fore_alphas"][1]:
         fore_alphas = [fore_alphas]*image_nums
     elif isinstance(fore_alphas, (tuple,list)):
         pass
@@ -89,8 +94,8 @@ def random_merge_images(fore_images,back_image,fore_poss=None,fore_alphas = None
         print(f"fore_alphas error {fore_alphas}")
         
     if fore_factors == None:
-        fore_factors = [random.randint(1,20)/10 for i in range(image_nums)]
-    elif isinstance(fore_factors, (float,int)):
+        fore_factors = [random.randint(fore_range["fore_factors"][0]*100,fore_range["fore_factors"][1]*100)/100 for i in range(image_nums)]
+    elif isinstance(fore_factors, (float,int)) or fore_range["fore_factors"][0]==fore_range["fore_factors"][1]:
         fore_factors = [fore_factors]*image_nums
     elif isinstance(fore_factors, (tuple,list)):
         pass
@@ -121,6 +126,7 @@ def random_merge_images(fore_images,back_image,fore_poss=None,fore_alphas = None
     else:
         pass
     labels = []
+    params = {"fore_alpha":[],"fore_factor":[],"fore_pos":[]}
     for i in range(image_nums): 
         fore_image = fore_images[i]
         fore_alpha = fore_alphas[i]
@@ -129,17 +135,20 @@ def random_merge_images(fore_images,back_image,fore_poss=None,fore_alphas = None
         if fore_pos == None:
             continue
         # print(fore_image.size,fore_alpha,fore_factor,fore_pos)
-        final_image,label = merge_image(fore_image, final_image, fore_pos=fore_pos, fore_alpha=fore_alpha, fore_factor=fore_factor, back_padding=False, fore_func=fore_func)
-        print("label",label)
+        final_image,label = merge_fore_to_back_image(fore_image, final_image, fore_pos=fore_pos, fore_alpha=fore_alpha, fore_factor=fore_factor, back_padding=False, fore_func=fore_func)
+        # print("label",label)
         labels.append(label)
-    return final_image,labels
+        params["fore_alpha"].append(fore_alphas[i])
+        params["fore_factor"].append(fore_factors[i])
+        params["fore_pos"].append(fore_poss[i])
+    return final_image,labels,params
 
 
 if __name__ == '__main__':
-    fore_image = Image.open("fore/hh.png").convert("RGBA")
+    fore_image = Image.open("fore/fore_1.png")
     back_image = Image.open("back/bg01.png").convert("RGBA").resize((1000,1000))
     # print(back_image.size)
-    # final_image,label = merge_image(fore_image, back_image,fore_pos=(100,100),back_padding=0,fore_alpha=0.5)
+    # final_image,label = merge_fore_to_back_image(fore_image, back_image,fore_pos=(100,100),back_padding=0,fore_alpha=0.5)
     # label = np.array(label)
     # plt.figure()
     # plt.subplot(1,3,1)
@@ -152,7 +161,7 @@ if __name__ == '__main__':
     # plt.show()
     
     
-    final_image,labels = random_merge_images([fore_image]*5,back_image,fore_poss=None, fore_alphas=0.5)
+    final_image,labels,_ = random_merge_images([fore_image]*2,back_image,fore_poss=None, fore_alphas=0.5)
     ##plt 同时显示多幅图像
     label = np.array(labels)
     # print([:,0])
