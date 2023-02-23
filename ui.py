@@ -512,7 +512,7 @@ class Ui_Dialog(object):
         self.file_pre.setText(_translate("Dialog", "{shape}_{num}_{time}"))
         self.top_filepath.setText(_translate("Dialog", "content/top.txt"))
         self.groupBox_2.setTitle(_translate("Dialog", "文字信息配置"))
-        self.top_text_content.setText(_translate("Dialog", "厦门天锐科技股份有限公司"))
+        self.top_text_content.setText(_translate("Dialog", "福建某某某有限公司"))
         self.label_23.setText(_translate("Dialog", "字体"))
         self.label_19.setText(_translate("Dialog", "文本行宽度"))
         self.label_30.setText(_translate("Dialog", "形状"))

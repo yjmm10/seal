@@ -267,7 +267,7 @@
      <item row="3" column="1">
       <widget class="QLineEdit" name="top_text_content">
        <property name="text">
-        <string>厦门天锐科技股份有限公司</string>
+        <string>福建某某某有限公司</string>
        </property>
       </widget>
      </item>
